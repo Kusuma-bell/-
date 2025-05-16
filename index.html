@@ -1,85 +1,148 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>แบบฟอร์มใบลาเรียน</title>
+    <title>ใบลาวิชาวงจรไฟฟ้ากระแสตรง</title>
     <style>
         body {
-            font-family: 'TH SarabunPSK', sans-serif;
-            margin: 40px;
-            line-height: 1.8;
+            font-family: "TH SarabunPSK", sans-serif;
+            line-height: 1.6;
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
         }
-        .header {
+        h2 {
             text-align: center;
-            margin-bottom: 20px;
-        }
-        .form-group {
-            margin-bottom: 10px;
         }
         label {
-            font-weight: bold;
+            display: block;
+            margin-top: 12px;
         }
-        .signatures {
+        input, select {
+            width: 100%;
+            padding: 6px;
+            margin-top: 4px;
+            margin-bottom: 10px;
+        }
+        .row {
+            display: flex;
+            gap: 10px;
+        }
+        .row > div {
+            flex: 1;
+        }
+        .signature-section {
+            margin-top: 40px;
             display: flex;
             justify-content: space-between;
-            margin-top: 40px;
             text-align: center;
         }
-        .signature-block {
+        .signature-box {
             width: 30%;
         }
         .signature-line {
             margin-top: 60px;
-            border-top: 1px solid #000;
-            margin-bottom: 5px;
+            border-bottom: 1px solid #000;
+            height: 2px;
+        }
+        .signature-label {
+            margin-top: 6px;
         }
         .note {
-            margin-top: 40px;
+            margin-top: 30px;
             font-style: italic;
-            color: #333;
+            color: #444;
+        }
+        button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* ✅ ซ่อนปุ่มตอนปริ้น */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h2>ใบลาเรียนรายวิชา</h2>
-        <p>วิชาวงจรไฟฟ้ากระแสตรง รหัสวิชา 20104-2002</p>
-        <p>อาจารย์ผู้สอน: ครูกุสุมา สิบแม่แต่</p>
-    </div>
 
-    <div class="form-group"><label>ชื่อ - นามสกุล:</label> ........................................................</div>
-    <div class="form-group"><label>รหัสนักศึกษา:</label> ........................................................</div>
-    <div class="form-group"><label>ระดับชั้น:</label> ........................................................</div>
-    <div class="form-group"><label>กลุ่ม:</label> ........................................................</div>
-    <div class="form-group"><label>ชื่ออาจารย์ที่ปรึกษา:</label> ........................................................</div>
-    <div class="form-group"><label>ชื่อผู้ปกครอง:</label> ........................................................</div>
-    <div class="form-group"><label>เบอร์โทรศัพท์ผู้ปกครอง:</label> ........................................................</div>
+<h2>ใบลาวิชาวงจรไฟฟ้ากระแสตรง (20104-2002)<br>อาจารย์กุสุมา สิบแม่แต่</h2>
 
-    <div class="form-group"><label>ประเภทการลา:</label> □ ลาป่วย □ ลากิจ</div>
-    <div class="form-group"><label>จำนวนวันที่ลา:</label> .......... วัน</div>
-    <div class="form-group"><label>ตั้งแต่วันที่:</label> ..................... <label>ถึงวันที่:</label> .....................</div>
-
-    <div class="signatures">
-        <div class="signature-block">
-            <div class="signature-line"></div>
-            <div>ลงชื่อ นักเรียน</div>
-            <div>( ................................................ )</div>
+<form id="leaveForm">
+    <label>ชื่อนักเรียน:
+        <input type="text" name="student_name" required>
+    </label>
+    <label>รหัสนักเรียน:
+        <input type="text" name="student_id" required>
+    </label>
+    <div class="row">
+        <div>
+            <label>ระดับชั้น:
+                <input type="text" name="level" required>
+            </label>
         </div>
-        <div class="signature-block">
-            <div class="signature-line"></div>
-            <div>ลงชื่อ ผู้ปกครอง</div>
-            <div>( ................................................ )</div>
-        </div>
-        <div class="signature-block">
-            <div class="signature-line"></div>
-            <div>ลงชื่อ ครูที่ปรึกษา</div>
-            <div>( ................................................ )</div>
+        <div>
+            <label>กลุ่ม:
+                <input type="text" name="group" required>
+            </label>
         </div>
     </div>
-
-    <div class="note">
-        * นักเรียนสามารถลาได้ไม่เกิน 3 ครั้งต่อภาคเรียน หากเกินกว่านี้จะได้รับผลการเรียนเป็น "ขร."
+    <label>ชื่ออาจารย์ที่ปรึกษา:
+        <input type="text" name="advisor" required>
+    </label>
+    <label>ชื่อผู้ปกครอง:
+        <input type="text" name="parent" required>
+    </label>
+    <label>เบอร์โทรศัพท์ผู้ปกครอง:
+        <input type="text" name="parent_phone" required>
+    </label>
+    <label>ประเภทการลา:
+        <select name="leave_type" required>
+            <option value="ลาป่วย">ลาป่วย</option>
+            <option value="ลากิจ">ลากิจ</option>
+        </select>
+    </label>
+    <label>จำนวนวันที่ลา:
+        <input type="number" name="days" required>
+    </label>
+    <div class="row">
+        <div>
+            <label>ตั้งแต่วันที่:
+                <input type="date" name="from_date" required>
+            </label>
+        </div>
+        <div>
+            <label>ถึงวันที่:
+                <input type="date" name="to_date" required>
+            </label>
+        </div>
     </div>
+</form>
+
+<div class="signature-section">
+    <div class="signature-box">
+        <div class="signature-line"></div>
+        <div class="signature-label">นักเรียน</div>
+    </div>
+    <div class="signature-box">
+        <div class="signature-line"></div>
+        <div class="signature-label">ผู้ปกครอง</div>
+    </div>
+    <div class="signature-box">
+        <div class="signature-line"></div>
+        <div class="signature-label">ครูที่ปรึกษา</div>
+    </div>
+</div>
+
+<p class="note">หมายเหตุ: นักเรียนสามารถขาดได้ไม่เกิน 3 ครั้ง หากเกินผลการเรียนจะเป็น ขร.</p>
+
+<div class="no-print" style="text-align: center; margin: 20px;">
+  <button onclick="window.print()">ดาวน์โหลดใบลาเพื่อปริ้น</button>
+</div>
+
 </body>
 </html>
