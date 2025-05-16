@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: "Sarabun", sans-serif;
+      padding: 30px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #fffbe7;
+      font-size: 16px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ffb703;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    h2 {
+      text-align: center;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<h2>ใบลาวิชาวงจรไฟฟ้ากระแสตรง<br>รหัสวิชา 20104-2002</h2>
+
+<p><strong>ชื่อ - สกุล:</strong> <input type="text"></p>
+<p><strong>รหัสนักเรียน:</strong> <input type="text"></p>
+<p><strong>ระดับชั้น:</strong> <input type="text"></p>
+<p><strong>กลุ่ม:</strong> <input type="text"></p>
+<p><strong>ชื่อผู้ปกครอง:</strong> <input type="text"></p>
+<p><strong>เบอร์โทรผู้ปกครอง:</strong> <input type="text"></p>
+<p><strong>ประเภทการลา:</strong> 
+  <select>
+    <option>ลาป่วย</option>
+    <option>ลากิจ</option>
+  </select>
+</p>
+<p><strong>วันที่ลา:</strong> <input type="date"></p>
+<p><strong>ถึงวันที่:</strong> <input type="date"></p>
+
+<p><strong>หมายเหตุ:</strong> นักเรียนสามารถขาดเรียนได้ไม่เกิน 3 ครั้ง หากเกินผลการเรียนจะเป็น “ขร.”</p>
+
+<hr>
+<p>ลงชื่อ นักเรียน: ..............................................</p>
+<p>ลงชื่อ ผู้ปกครอง: ...........................................</p>
+<p>ลงชื่อ ครูที่ปรึกษา: ......................................</p>
+
+<button onclick="window.print()">📄 ดาวน์โหลดเป็น PDF</button>
+
+</body>
+</html>
